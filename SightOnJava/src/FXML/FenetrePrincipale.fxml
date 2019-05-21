@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FenetrePrincipaleController">
+   <top>
+      <VBox prefHeight="93.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="menuItemClose" mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ToolBar style="-fx-background-color: #DEE3E3;">
+              <items>
+                <Button fx:id="plyBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actionerAlgorithme">
+                     <graphic>
+                        <ImageView fx:id="imageplyBtn" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/plyON.png" />
+                           </image>
+                           <effect>
+                              <DropShadow blurType="ONE_PASS_BOX" color="WHITE" height="20.0" radius="9.5" spread="0.5" width="20.0" />
+                           </effect></ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Separator orientation="VERTICAL" />
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Notifications:">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <VBox.margin>
+                              <Insets bottom="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <CheckBox fx:id="checkEmail" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="E-mails">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                              </CheckBox>
+                              <Separator orientation="VERTICAL">
+                                 <HBox.margin>
+                                    <Insets top="2.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <CheckBox fx:id="checkSMS" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="SMS">
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin></CheckBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Separator>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin></Separator>
+                        <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" text="Notification settings">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Example: MaksimTeam@esi-sba.dz">
+                                 <graphic>
+                                    <TextField fx:id="emailText" alignment="CENTER" prefHeight="25.0" prefWidth="175.0" promptText="E-mail" />
+                                 </graphic>
+                              </MenuItem>
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" text="Example: +213558475231">
+                                 <graphic>
+                                    <TextField fx:id="smsText" alignment="CENTER" prefHeight="25.0" prefWidth="175.0" promptText="N° De Telephone" />
+                                 </graphic>
+                              </MenuItem>
+                              <MenuItem mnemonicParsing="false" text="Output port">
+                                 <graphic>
+                                    <ComboBox fx:id="comboSMS" prefHeight="25.0" prefWidth="175.0" />
+                                 </graphic>
+                              </MenuItem>
+                           </items>
+                        </MenuButton>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" />
+                  <VBox alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="70.0" text="FPS:       ">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                              </Label>
+                              <Slider fx:id="fpsBarre" blockIncrement="0.0" majorTickUnit="4.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" min="1.0" prefHeight="40.0" prefWidth="620.0" showTickLabels="true" showTickMarks="true" value="25.0">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </Slider>
+                           </children>
+                        </HBox>
+                        <Separator>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="5.0" />
+                           </VBox.margin></Separator>
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="70.0" text="Sensitivity:">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                              </Label>
+                              <Slider fx:id="slideSensibilite" blockIncrement="2.0" majorTickUnit="2.0" max="50.0" min="10.0" minorTickCount="1" prefHeight="40.0" prefWidth="620.0" showTickLabels="true" showTickMarks="true" value="15.0">
+                                 <effect>
+                                    <Blend />
+                                 </effect></Slider>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="91.0" prefWidth="0.0" />
+                  <VBox alignment="CENTER">
+                     <children>
+                        <CheckBox fx:id="videoCheck" mnemonicParsing="false" text="Enregistrer une video">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </CheckBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label prefHeight="30.0" prefWidth="120.0" text="Average video time:">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="13.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Spinner fx:id="tmpMoyen" prefWidth="110.0">
+                                 <effect>
+                                    <Reflection />
+                                 </effect>
+                              </Spinner>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Separator prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets top="1.0" />
+                           </VBox.margin></Separator>
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Label prefHeight="19.0" prefWidth="75.0" text="Output port:">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets top="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actualiserPorts" prefHeight="37.0" prefWidth="40.0">
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                                       <image>
+                                          <Image url="@Images/Fatcow-Farm-Fresh-Port.png" />
+                                       </image>
+                                       <effect>
+                                          <DropShadow color="WHITE" height="40.0" radius="19.5" spread="0.3" width="40.0" />
+                                       </effect>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <ComboBox fx:id="comboPort" prefHeight="25.0" prefWidth="110.0">
+                                 <effect>
+                                    <Reflection />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets top="3.0" />
+                                 </HBox.margin></ComboBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="91.0" prefWidth="11.0" />
+                  <VBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <MenuButton alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" text=" Viewing choice " textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                           <items>
+                              <CheckMenuItem fx:id="visionerOriginale" mnemonicParsing="false" selected="true" text="Camera viewing" />
+                              <CheckMenuItem fx:id="visionerAlgorithme" mnemonicParsing="false" selected="true" text="Algorithme viewing" />
+                           </items>
+                           <effect>
+                              <Reflection fraction="0.77" topOpacity="0.21" />
+                           </effect>
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+                           </font>
+                        </MenuButton>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Circle fx:id="signaleAlgorithme" radius="20.0" stroke="WHITE" strokeType="INSIDE">
+                                 <fill>
+                                    <RadialGradient centerX="0.5055555555555555" centerY="0.5" radius="1.0">
+                                       <stops>
+                                          <Stop color="RED" />
+                                          <Stop color="TRANSPARENT" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </fill>
+                                 <effect>
+                                    <Reflection />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Circle>
+                              <Separator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="35.0">
+                                 <HBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Circle fx:id="signaleMouvement" radius="20.0" stroke="WHITE" strokeType="INSIDE">
+                                 <fill>
+                                    <RadialGradient centerX="0.5" centerY="0.5" radius="1.0">
+                                       <stops>
+                                          <Stop color="BLUE" />
+                                          <Stop color="WHITE" offset="1.0" />
+                                       </stops>
+                                    </RadialGradient>
+                                 </fill>
+                                 <effect>
+                                    <Reflection />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Circle>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+              </items>
+            </ToolBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TabPane prefHeight="661.0" prefWidth="1360.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Real-time algorithm">
+               <content>
+                  <BorderPane fx:id="BorderPane" prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <TitledPane maxHeight="1.7976931348623157E308" style="-fx-border-color: #F6E497;" text="Available cameras" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </BorderPane.margin>
+                           <content>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #DEE3E3;">
+                                 <center>
+                                    <ListView fx:id="ListeCameras" BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="1.0" />
+                                       </BorderPane.margin>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#changerCamera" text="Select" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </ListView>
+                                 </center>
+                                 <top>
+                                    <Button fx:id="actualiserBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#actualiserCameras" prefWidth="185.0" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                                       <graphic>
+                                          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../FXML/Images/44209.png" />
+                                             </image>
+                                             <effect>
+                                                <DropShadow color="WHITE" height="40.0" radius="19.5" spread="0.5" width="40.0" />
+                                             </effect>
+                                          </ImageView>
+                                       </graphic>
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" top="5.0" />
+                                       </BorderPane.margin>
+                                       <effect>
+                                          <Lighting bumpInput="$null" diffuseConstant="2.0" specularConstant="2.0" specularExponent="25.0" surfaceScale="5.0">
+                                             <light>
+                                                <javafx.scene.effect.Light.Distant azimuth="275.0" elevation="40.0" />
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                    </Button>
+                                 </top>
+                              </BorderPane>
+                           </content>
+                           <effect>
+                              <Blend />
+                           </effect>
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="17.0" />
+                           </font>
+                        </TitledPane>
+                     </left>
+                     <center>
+                        <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Viewing" BorderPane.alignment="TOP_LEFT">
+                           <content>
+                              <SplitPane fx:id="SplitPane" disable="true" dividerPositions="0.4872021182700794">
+                                 <items>
+                                    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+                                       <center>
+                                          <ImageView fx:id="videoOriginale" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+                                       <center>
+                                          <ImageView fx:id="videoAlgorithme" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <BorderPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </BorderPane.margin>
+                                          </ImageView>
+                                       </center>
+                                    </BorderPane>
+                                 </items>
+                              </SplitPane>
+                           </content>
+                           <BorderPane.margin>
+                              <Insets bottom="5.0" right="5.0" top="5.0" />
+                           </BorderPane.margin>
+                           <effect>
+                              <DisplacementMap>
+                                 <mapData>
+                                    <FloatMap />
+                                 </mapData>
+                              </DisplacementMap>
+                           </effect>
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="17.0" />
+                           </font>
+                        </TitledPane>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="History">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <TableView fx:id="tableHistorique" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </BorderPane.margin>
+                           <columns>
+                              <TableColumn fx:id="numeroIntrusion" prefWidth="150.0" text="Numero de l'instrusion" />
+                              <TableColumn fx:id="dateIntrusion" minWidth="0.0" prefWidth="159.0" text="Date de l'intrusion" />
+                              <TableColumn fx:id="tempsIntrusion" minWidth="0.0" prefWidth="142.0" text="L'heure de l'intrusion" />
+                           </columns>
+                        </TableView>
+                     </center></BorderPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
